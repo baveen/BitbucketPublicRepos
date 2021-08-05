@@ -24,6 +24,7 @@ struct Repositories: Codable {
 }
 
 struct PublicRepo: Codable {
+    let uuid: String?
     let fullName: String?
     let name: String?
     let language: String?
@@ -33,6 +34,7 @@ struct PublicRepo: Codable {
     let description: String?
     
     enum CodingKeys: String, CodingKey {
+        case uuid = "uuid"
         case fullName = "full_name"
         case name = "name"
         case language = "language"
@@ -44,6 +46,7 @@ struct PublicRepo: Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        uuid = try values.decodeIfPresent(String.self, forKey: .uuid)
         fullName = try values.decodeIfPresent(String.self, forKey: .fullName)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         language = try values.decodeIfPresent(String.self, forKey: .language)
@@ -58,13 +61,13 @@ struct RepoOwner: Codable {
     let displayName: String?
     let nickName: String?
     let links: Links?
-    let id: String?
+    let accountId: String?
     
     enum CodingKeys: String, CodingKey {
         case displayName = "display_name"
         case nickName = "nickname"
         case links = "links"
-        case id = "account_id"
+        case accountId = "account_id"
     }
     
     init(from decoder: Decoder) throws {
@@ -72,7 +75,7 @@ struct RepoOwner: Codable {
         displayName = try values.decodeIfPresent(String.self, forKey: .displayName)
         nickName = try values.decodeIfPresent(String.self, forKey: .nickName)
         links = try values.decodeIfPresent(Links.self, forKey: .links)
-        id = try values.decodeIfPresent(String.self, forKey: .id)
+        accountId = try values.decodeIfPresent(String.self, forKey: .accountId)
     }
 }
 

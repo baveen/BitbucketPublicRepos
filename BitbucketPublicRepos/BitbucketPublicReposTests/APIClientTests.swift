@@ -23,24 +23,19 @@ class APIClientTests: XCTestCase {
     }
     
     func testGetData() {
-        client.getData(urlString: client.baseURL ?? "") { data in
+        client.getData(urlString: client.baseURL ?? "") { data, error in
             XCTAssertNotNil(data)
-        } failure: { error in
-            XCTFail("Mock loading failed")
         }
     }
 }
 
-class MockAPIClient: ClientProtocol {
+class MockAPIClient: ClientProtocol {    
     var baseURL: String?
     
     required init(baseUrl: String) {
         print("\(baseUrl)")
     }
-    
-    func getData(urlString: String,
-                 success: @escaping (Data) -> (),
-                 failure: @escaping (Error?) -> ()) {
+    func getData(urlString: String?, completion: @escaping (Data?, Error?) -> Void) {
         let bundle = Bundle(for: type(of: self))
         guard let url = bundle.url(forResource: "MockRepos", withExtension: "json") else {
             XCTFail("Unable to find MockRepos.json file")
@@ -48,9 +43,9 @@ class MockAPIClient: ClientProtocol {
         }
         guard let data = try? Data(contentsOf: url, options: .mappedIfSafe) else {
             let error = NSError(domain: "om.rbtechsolutions.SampleBitBucketRep.mock", code: 1005, userInfo: ["mockFailed" : "Unable to Fetch Data"])
-            failure(error)
+            completion(nil, error)
             return
         }
-        success(data)
+        completion(data,nil)
     }
 }

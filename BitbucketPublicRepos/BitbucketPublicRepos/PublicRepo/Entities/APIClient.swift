@@ -12,9 +12,8 @@ protocol ClientProtocol {
     var baseURL: String? {get set}
     
     init(baseUrl: String)
-    func getData(urlString: String,
-                 success: @escaping (Data) -> (),
-                 failure: @escaping (Error?) -> ())
+    func getData(urlString: String?,
+                 completion: @escaping (_ data: Data?, _ error: Error?) -> Void)
 }
 
 class APIClient: ClientProtocol {
@@ -24,30 +23,28 @@ class APIClient: ClientProtocol {
         self.baseURL = baseUrl
     }
     
-    func getData(urlString: String,
-                 success: @escaping (Data) -> (),
-                 failure: @escaping (Error?) -> ()) {
-        
-        guard let url = URL(string: urlString) else {
+    func getData(urlString: String?, completion: @escaping (Data?, Error?) -> Void) {
+        guard let urlStr = urlString, let url = URL(string: urlStr) else {
             return
         }
         
         let urlReq = URLRequest(url: url as URL)
         let dataTask = URLSession.shared.dataTask(with: urlReq) { (data, urlResponse, error) in
             if error != nil {
-                failure(error)
+                completion(nil, error)
                 return
             } else if let httpResp = urlResponse as? HTTPURLResponse, let reponseData = data {
                 switch httpResp.statusCode {
                 case 200, 201:
-                    success(reponseData)
+                    completion(reponseData, nil)
                 default:
-                    let error = NSError(domain: "om.rbtechsolutions.SampleBitBucketRep", code: 1001, userInfo: ["fetchFailed" : "Unable to Fetch Data"])
-                    failure(error)
+                    let customError = NSError(domain: "om.rbtechsolutions.SampleBitBucketRep", code: 1001, userInfo: ["fetchFailed" : "Unable to Fetch Data"])
+                    completion(nil, customError)
                 }
             }
         }
         dataTask.resume()
     }
+    
 }
 
