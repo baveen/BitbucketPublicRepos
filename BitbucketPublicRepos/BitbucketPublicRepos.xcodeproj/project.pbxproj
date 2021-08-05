@@ -12,8 +12,10 @@
 		C69B22E226BB9AA700741CC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69B22E026BB9AA700741CC0 /* Main.storyboard */; };
 		C69B22E426BB9AAB00741CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69B22E326BB9AAB00741CC0 /* Assets.xcassets */; };
 		C69B22E726BB9AAB00741CC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69B22E526BB9AAB00741CC0 /* LaunchScreen.storyboard */; };
-		C69B22F226BB9AAB00741CC0 /* BitbucketPublicReposTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69B22F126BB9AAB00741CC0 /* BitbucketPublicReposTests.swift */; };
 		C69B22FD26BB9AAB00741CC0 /* BitbucketPublicReposUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69B22FC26BB9AAB00741CC0 /* BitbucketPublicReposUITests.swift */; };
+		C69B230B26BB9C3E00741CC0 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69B230A26BB9C3E00741CC0 /* DataModels.swift */; };
+		C69B231026BB9EAE00741CC0 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69B230F26BB9EAE00741CC0 /* DataModelTests.swift */; };
+		C69B231226BBA26100741CC0 /* MockRepos.json in Resources */ = {isa = PBXBuildFile; fileRef = C69B231126BBA26100741CC0 /* MockRepos.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +44,13 @@
 		C69B22E626BB9AAB00741CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C69B22E826BB9AAB00741CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C69B22ED26BB9AAB00741CC0 /* BitbucketPublicReposTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitbucketPublicReposTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C69B22F126BB9AAB00741CC0 /* BitbucketPublicReposTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitbucketPublicReposTests.swift; sourceTree = "<group>"; };
 		C69B22F326BB9AAB00741CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C69B22F826BB9AAB00741CC0 /* BitbucketPublicReposUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitbucketPublicReposUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69B22FC26BB9AAB00741CC0 /* BitbucketPublicReposUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitbucketPublicReposUITests.swift; sourceTree = "<group>"; };
 		C69B22FE26BB9AAB00741CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C69B230A26BB9C3E00741CC0 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		C69B230F26BB9EAE00741CC0 /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTests.swift; sourceTree = "<group>"; };
+		C69B231126BBA26100741CC0 /* MockRepos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockRepos.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				C69B22E326BB9AAB00741CC0 /* Assets.xcassets */,
 				C69B22E526BB9AAB00741CC0 /* LaunchScreen.storyboard */,
 				C69B22E826BB9AAB00741CC0 /* Info.plist */,
+				C69B230C26BB9DB900741CC0 /* Entities */,
 			);
 			path = BitbucketPublicRepos;
 			sourceTree = "<group>";
@@ -110,7 +115,8 @@
 		C69B22F026BB9AAB00741CC0 /* BitbucketPublicReposTests */ = {
 			isa = PBXGroup;
 			children = (
-				C69B22F126BB9AAB00741CC0 /* BitbucketPublicReposTests.swift */,
+				C69B230F26BB9EAE00741CC0 /* DataModelTests.swift */,
+				C69B231126BBA26100741CC0 /* MockRepos.json */,
 				C69B22F326BB9AAB00741CC0 /* Info.plist */,
 			);
 			path = BitbucketPublicReposTests;
@@ -123,6 +129,14 @@
 				C69B22FE26BB9AAB00741CC0 /* Info.plist */,
 			);
 			path = BitbucketPublicReposUITests;
+			sourceTree = "<group>";
+		};
+		C69B230C26BB9DB900741CC0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C69B230A26BB9C3E00741CC0 /* DataModels.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69B231226BBA26100741CC0 /* MockRepos.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69B230B26BB9C3E00741CC0 /* DataModels.swift in Sources */,
 				C69B22DF26BB9AA700741CC0 /* ViewController.swift in Sources */,
 				C69B22DB26BB9AA700741CC0 /* AppDelegate.swift in Sources */,
 			);
@@ -264,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C69B22F226BB9AAB00741CC0 /* BitbucketPublicReposTests.swift in Sources */,
+				C69B231026BB9EAE00741CC0 /* DataModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

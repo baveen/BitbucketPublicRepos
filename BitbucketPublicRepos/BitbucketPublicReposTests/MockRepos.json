@@ -1,0 +1,253 @@
+{
+  "pagelen": 10,
+  "values": [
+    {
+      "scm": "git",
+      "website": "",
+      "has_wiki": false,
+      "uuid": "{d6ad0a37-2f18-4955-954b-2c0e6661835c}",
+      "links": {
+        "watchers": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/watchers"
+        },
+        "branches": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/refs/branches"
+        },
+        "tags": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/refs/tags"
+        },
+        "commits": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/commits"
+        },
+        "clone": [
+          {
+            "href": "https://bitbucket.org/mrdon/jira4-compat.git",
+            "name": "https"
+          },
+          {
+            "href": "git@bitbucket.org:mrdon/jira4-compat.git",
+            "name": "ssh"
+          }
+        ],
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat"
+        },
+        "source": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/src"
+        },
+        "html": {
+          "href": "https://bitbucket.org/mrdon/jira4-compat"
+        },
+        "avatar": {
+          "href": "https://bytebucket.org/ravatar/%7Bd6ad0a37-2f18-4955-954b-2c0e6661835c%7D?ts=java"
+        },
+        "hooks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/hooks"
+        },
+        "forks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/forks"
+        },
+        "downloads": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/downloads"
+        },
+        "issues": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/issues"
+        },
+        "pullrequests": {
+          "href": "https://api.bitbucket.org/2.0/repositories/mrdon/jira4-compat/pullrequests"
+        }
+      },
+      "fork_policy": "allow_forks",
+      "full_name": "mrdon/jira4-compat",
+      "name": "jira4-compat",
+      "project": {
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/mrdon/projects/PROJ"
+          },
+          "html": {
+            "href": "https://bitbucket.org/mrdon/workspace/projects/PROJ"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/account/user/mrdon/projects/PROJ/avatar/32?ts=1543457728"
+          }
+        },
+        "type": "project",
+        "name": "Untitled project",
+        "key": "PROJ",
+        "uuid": "{54e3a19b-e02f-48bc-aa2d-53ef96b22c82}"
+      },
+      "language": "java",
+      "created_on": "2011-09-08T01:43:21.182004+00:00",
+      "mainbranch": {
+        "type": "branch",
+        "name": "master"
+      },
+      "workspace": {
+        "slug": "mrdon",
+        "type": "workspace",
+        "name": "Don Brown",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/mrdon"
+          },
+          "html": {
+            "href": "https://bitbucket.org/mrdon/"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/workspaces/mrdon/avatar/?ts=1543457728"
+          }
+        },
+        "uuid": "{3940bad8-4dcb-48ae-b572-55ecaf8062f5}"
+      },
+      "has_issues": true,
+      "owner": {
+        "display_name": "Don Brown",
+        "uuid": "{3940bad8-4dcb-48ae-b572-55ecaf8062f5}",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7B3940bad8-4dcb-48ae-b572-55ecaf8062f5%7D"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7B3940bad8-4dcb-48ae-b572-55ecaf8062f5%7D/"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/6c5774a17f0fae7933adfe0293ee59f3?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FDB-1.png"
+          }
+        },
+        "type": "user",
+        "nickname": "DonB",
+        "account_id": "557058:b66df88b-2eb7-424d-bdcc-3dc8146aa912"
+      },
+      "updated_on": "2012-07-24T08:11:00",
+      "size": 105939,
+      "type": "repository",
+      "slug": "jira4-compat",
+      "is_private": false,
+      "description": "JIRA 4 compatibility library for JIRA 5 plugins"
+    },
+    {
+      "scm": "git",
+      "website": "",
+      "has_wiki": false,
+      "uuid": "{3f630668-75f1-4903-ae5e-8ea37437e09e}",
+      "links": {
+        "watchers": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/watchers"
+        },
+        "branches": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/refs/branches"
+        },
+        "tags": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/refs/tags"
+        },
+        "commits": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/commits"
+        },
+        "clone": [
+          {
+            "href": "https://bitbucket.org/opensymphony/xwork.git",
+            "name": "https"
+          },
+          {
+            "href": "git@bitbucket.org:opensymphony/xwork.git",
+            "name": "ssh"
+          }
+        ],
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork"
+        },
+        "source": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/src"
+        },
+        "html": {
+          "href": "https://bitbucket.org/opensymphony/xwork"
+        },
+        "avatar": {
+          "href": "https://bytebucket.org/ravatar/%7B3f630668-75f1-4903-ae5e-8ea37437e09e%7D?ts=java"
+        },
+        "hooks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/hooks"
+        },
+        "forks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/forks"
+        },
+        "downloads": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/downloads"
+        },
+        "pullrequests": {
+          "href": "https://api.bitbucket.org/2.0/repositories/opensymphony/xwork/pullrequests"
+        }
+      },
+      "fork_policy": "allow_forks",
+      "full_name": "opensymphony/xwork",
+      "name": "xwork",
+      "project": {
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/opensymphony/projects/PROJ"
+          },
+          "html": {
+            "href": "https://bitbucket.org/opensymphony/workspace/projects/PROJ"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/account/user/opensymphony/projects/PROJ/avatar/32?ts=1543460518"
+          }
+        },
+        "type": "project",
+        "name": "Untitled project",
+        "key": "PROJ",
+        "uuid": "{57fac509-0df2-47ce-ad8e-27be013523fa}"
+      },
+      "language": "java",
+      "created_on": "2011-06-06T03:40:09.505792+00:00",
+      "mainbranch": {
+        "type": "branch",
+        "name": "master"
+      },
+      "workspace": {
+        "slug": "opensymphony",
+        "type": "workspace",
+        "name": "opensymphony",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/opensymphony"
+          },
+          "html": {
+            "href": "https://bitbucket.org/opensymphony/"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/workspaces/opensymphony/avatar/?ts=1543460518"
+          }
+        },
+        "uuid": "{cedfd0d1-899f-49de-acf7-a2fa8e924b6f}"
+      },
+      "has_issues": false,
+      "owner": {
+        "display_name": "opensymphony",
+        "uuid": "{cedfd0d1-899f-49de-acf7-a2fa8e924b6f}",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bcedfd0d1-899f-49de-acf7-a2fa8e924b6f%7D"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bcedfd0d1-899f-49de-acf7-a2fa8e924b6f%7D/"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/account/opensymphony/avatar/"
+          }
+        },
+        "type": "user",
+        "nickname": "opensymphony",
+        "account_id": null
+      },
+      "updated_on": "2014-11-16T23:19:16.674082+00:00",
+      "size": 22877949,
+      "type": "repository",
+      "slug": "xwork",
+      "is_private": false,
+      "description": ""
+    }
+  ],
+  "next": "https://api.bitbucket.org/2.0/repositories?after=2011-09-03T12%3A33%3A16028393%2B00%3A00"
+}
