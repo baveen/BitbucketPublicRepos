@@ -47,7 +47,9 @@ class RepoPresenter: InteractorToPresenterProtocol, ViewToPresenterProtocol {
     
     func fetchFailed(error: Error) {
         let err = error as NSError
-        view?.showFetchFailedMessage(message: err.userInfo["fetchFailed"] as! String)
+        if let msg = err.userInfo["fetchFailed"] as? String {
+            view?.showFetchFailedMessage(message: msg)
+        }
     }
     
 }

@@ -14,7 +14,7 @@ class APIClientTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        client = MockAPIClient(baseUrl: "testingurl")
+        client = MockAPIClient(baseUrl: "")
     }
 
     override func tearDownWithError() throws {
@@ -33,16 +33,22 @@ class MockAPIClient: ClientProtocol {
     var baseURL: String?
     
     required init(baseUrl: String) {
-        print("\(baseUrl)")
+        self.baseURL = baseUrl
     }
+    
     func getData(urlString: String?, completion: @escaping (Data?, Error?) -> Void) {
         let bundle = Bundle(for: type(of: self))
-        guard let url = bundle.url(forResource: "MockRepos", withExtension: "json") else {
-            XCTFail("Unable to find MockRepos.json file")
+        var path = "MockRepos"
+        let error = NSError(domain: "om.rbtechsolutions.SampleBitBucketRep.mock", code: 1005, userInfo: ["mockFailed" : "Unable to Fetch Data"])
+        if let str = urlString, str != "" {
+            path = str
+        }
+        guard let url = bundle.url(forResource: path, withExtension: "json") else {
+            completion(nil, error)
             return
         }
+        
         guard let data = try? Data(contentsOf: url, options: .mappedIfSafe) else {
-            let error = NSError(domain: "om.rbtechsolutions.SampleBitBucketRep.mock", code: 1005, userInfo: ["mockFailed" : "Unable to Fetch Data"])
             completion(nil, error)
             return
         }

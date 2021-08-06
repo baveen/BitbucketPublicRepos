@@ -9,7 +9,7 @@ import UIKit
 
 class PublicRepoTableViewCell: UITableViewCell {
 
-    var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let imv = UIImageView()
         imv.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         imv.contentMode = .scaleAspectFill
@@ -17,17 +17,17 @@ class PublicRepoTableViewCell: UITableViewCell {
         return imv
     }()
     
-    var repositoryNameLabel: UILabel = {
+    lazy var repositoryNameLabel: UILabel = {
         let repoName = UILabel()
         return repoName
     }()
     
-    var typeNameLabel: UILabel = {
+    lazy var typeNameLabel: UILabel = {
         let type = UILabel()
         return type
     }()
     
-    var createdDateLabel: UILabel = {
+    lazy var createdDateLabel: UILabel = {
         let date = UILabel()
         return date
     }()
@@ -46,6 +46,7 @@ class PublicRepoTableViewCell: UITableViewCell {
         return holder
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureCell()
@@ -55,6 +56,15 @@ class PublicRepoTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
         self.separatorInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         configureCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarImageView.image = nil
+        repositoryNameLabel.text = nil
+        typeNameLabel.text = nil
+        createdDateLabel.text = nil
     }
     
     
@@ -83,28 +93,26 @@ class PublicRepoTableViewCell: UITableViewCell {
 
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        avatarImageView.image = nil
-        repositoryNameLabel.text = nil
-        typeNameLabel.text = nil
-        createdDateLabel.text = nil
+    func customize(label: UILabel) {
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 14)
     }
 
     func update(repo: PublicRepo, at cell: PublicRepoTableViewCell) {
         DispatchQueue.main.async {
             cell.repositoryNameLabel.text = "Repo Name: \(repo.fullName ?? "")".capitalized
             cell.typeNameLabel.text = "Type: \(repo.type ?? "")".capitalized
-            cell.createdDateLabel.text = "Created On: \(repo.createdOn ?? "")".capitalized
+            cell.createdDateLabel.text = "Created On: \(repo.createdOn?.dateFromString() ?? "")".capitalized
         }
     }
     
-    
-    
-    func customize(label: UILabel) {
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 14)
+}
+
+extension String {
+    func dateFromString() -> String {
+        let dateFor: DateFormatter = DateFormatter()
+        dateFor.dateFormat = "YYYY-MM-dd"
+        return dateFor.string(from: dateFor.date(from: self) ?? Date())
     }
 }
 
@@ -123,7 +131,7 @@ extension UIImageView {
                 return
             }
         }
-        DispatchQueue.global().async {
+        DispatchQueue(label: "download.images", qos: .background, attributes: []).async {
             if let urlStr = owner?.links?.avatarLink?.href, let url = URL(string: urlStr), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 self.imageCache.setObject(image, forKey: userId)
                 DispatchQueue.main.async {
