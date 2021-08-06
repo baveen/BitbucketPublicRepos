@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C66517A526BD16D80031C5E9 /* RepoInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66517A426BD16D80031C5E9 /* RepoInteractorTests.swift */; };
+		C66517A726BD1C5D0031C5E9 /* RepoPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66517A626BD1C5D0031C5E9 /* RepoPresenterTests.swift */; };
 		C69B22DB26BB9AA700741CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69B22DA26BB9AA700741CC0 /* AppDelegate.swift */; };
 		C69B22E226BB9AA700741CC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69B22E026BB9AA700741CC0 /* Main.storyboard */; };
 		C69B22E426BB9AAB00741CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69B22E326BB9AAB00741CC0 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C66517A426BD16D80031C5E9 /* RepoInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoInteractorTests.swift; sourceTree = "<group>"; };
+		C66517A626BD1C5D0031C5E9 /* RepoPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPresenterTests.swift; sourceTree = "<group>"; };
 		C69B22D726BB9AA700741CC0 /* BitbucketPublicRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitbucketPublicRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69B22DA26BB9AA700741CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69B22E126BB9AA700741CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				C69B231126BBA26100741CC0 /* MockRepos.json */,
 				C69B22F326BB9AAB00741CC0 /* Info.plist */,
 				C69B231526BBBCCE00741CC0 /* APIClientTests.swift */,
+				C66517A426BD16D80031C5E9 /* RepoInteractorTests.swift */,
+				C66517A626BD1C5D0031C5E9 /* RepoPresenterTests.swift */,
 			);
 			path = BitbucketPublicReposTests;
 			sourceTree = "<group>";
@@ -347,7 +353,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66517A726BD1C5D0031C5E9 /* RepoPresenterTests.swift in Sources */,
 				C69B231026BB9EAE00741CC0 /* DataModelTests.swift in Sources */,
+				C66517A526BD16D80031C5E9 /* RepoInteractorTests.swift in Sources */,
 				C69B231626BBBCCE00741CC0 /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

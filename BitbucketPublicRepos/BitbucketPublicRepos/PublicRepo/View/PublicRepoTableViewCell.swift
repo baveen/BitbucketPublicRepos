@@ -9,7 +9,7 @@ import UIKit
 
 class PublicRepoTableViewCell: UITableViewCell {
 
-    var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let imv = UIImageView()
         imv.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         imv.contentMode = .scaleAspectFill
@@ -17,17 +17,17 @@ class PublicRepoTableViewCell: UITableViewCell {
         return imv
     }()
     
-    var repositoryNameLabel: UILabel = {
+    lazy var repositoryNameLabel: UILabel = {
         let repoName = UILabel()
         return repoName
     }()
     
-    var typeNameLabel: UILabel = {
+    lazy var typeNameLabel: UILabel = {
         let type = UILabel()
         return type
     }()
     
-    var createdDateLabel: UILabel = {
+    lazy var createdDateLabel: UILabel = {
         let date = UILabel()
         return date
     }()
