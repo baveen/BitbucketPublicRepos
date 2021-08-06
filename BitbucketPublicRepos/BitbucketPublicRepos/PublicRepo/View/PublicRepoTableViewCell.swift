@@ -123,7 +123,7 @@ extension UIImageView {
                 return
             }
         }
-        DispatchQueue.global().async {
+        DispatchQueue(label: "download.images", qos: .background, attributes: []).async {
             if let urlStr = owner?.links?.avatarLink?.href, let url = URL(string: urlStr), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 self.imageCache.setObject(image, forKey: userId)
                 DispatchQueue.main.async {
