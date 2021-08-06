@@ -21,18 +21,27 @@ class ReposViewController: UIViewController, PresenterToViewProtocol {
         tblView.separatorStyle = .singleLine
         return tblView
     }()
+    
+    lazy var activityIndicator : UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView.init(style: .large)
+        activityIndicator.center = self.view.center
+        return activityIndicator
+    }()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         configureViews()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(PublicRepoTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.register(ReloadTableViewCell.self, forCellReuseIdentifier: reloadCellIdentifier)
+        self.tableView.isHidden = true
+       
+        showLoader()
         presenter?.loadRepos()
-
     }
 
     func configureViews() {
@@ -44,16 +53,42 @@ class ReposViewController: UIViewController, PresenterToViewProtocol {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
+        view.addSubview(activityIndicator)
     }
     
+    func showLoader() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.activityIndicator.isHidden = false
+        }
+    }
+    
+    func hideLoader() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
+    }
     
     func showFetchFailedMessage(message: String) {
-        
+        hideLoader()
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error in Loading", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func showFetchedRepos(repos: [PublicRepo]) {
         reposCollection += repos
         DispatchQueue.main.async {
+            if self.tableView.isHidden {
+                self.tableView.isHidden = false
+            }
+            self.hideLoader()
             self.tableView.reloadData()
         }
     }
@@ -80,7 +115,7 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource, Reloa
         
         let rep = reposCollection[indexPath.row]
         cell.update(repo: rep, at: cell)
-        cell.updateImage(owner: rep.owner)
+        cell.avatarImageView.updateImage(owner: rep.owner)
         return cell
     }
     
@@ -93,6 +128,7 @@ extension ReposViewController: UITableViewDelegate, UITableViewDataSource, Reloa
     }
     
     func fetchNextAvailbaleData() {
+        showLoader()
         presenter?.loadRepos()
     }
     

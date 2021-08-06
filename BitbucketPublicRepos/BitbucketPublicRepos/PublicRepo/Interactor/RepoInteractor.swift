@@ -27,7 +27,6 @@ protocol InteractorToPresenterProtocol: AnyObject {
 class RepoInteractor: PresenterToInteractorProtocol {
     
     var client: ClientProtocol
-    private let baseUrl = "https://api.bitbucket.org/2.0/repositories"
     
     weak var presenter: InteractorToPresenterProtocol?
     var publicRepos: [PublicRepo]?
@@ -41,9 +40,9 @@ class RepoInteractor: PresenterToInteractorProtocol {
         }
     }
     
-    init(client: ClientProtocol = APIClient(baseUrl: "")) {
+    init(client: ClientProtocol = APIClient(baseUrl: "https://api.bitbucket.org/2.0/repositories")) {
         self.client = client
-        self.nextUrl = baseUrl
+        self.nextUrl = client.baseURL
     }
     
     func fetchRepos(url: String?) {

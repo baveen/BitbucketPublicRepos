@@ -7,8 +7,6 @@
 
 import UIKit
 
-let imageCache = NSCache<NSString, UIImage>()
-
 class PublicRepoTableViewCell: UITableViewCell {
 
     var avatarImageView: UIImageView = {
@@ -102,30 +100,37 @@ class PublicRepoTableViewCell: UITableViewCell {
         }
     }
     
-    func updateImage(owner: RepoOwner?) {
-        guard  let userId = owner?.accountId as NSString? else {
-            return
-        }
-        if let img = imageCache.object(forKey: userId) {
-            DispatchQueue.main.async {
-                self.avatarImageView.image = img
-                return
-            }
-        }
-        DispatchQueue.global().async {
-            if let urlStr = owner?.links?.avatarLink?.href, let url = URL(string: urlStr), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                imageCache.setObject(image, forKey: userId)
-                DispatchQueue.main.async {
-                    self.avatarImageView.image = image
-                }
-            }else {
-                self.avatarImageView.image = UIImage(named: "Placeholder")
-            }
-        }
-    }
+    
     
     func customize(label: UILabel) {
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14)
     }
 }
+
+extension UIImageView {
+    var imageCache: NSCache<NSString, UIImage> {
+        return NSCache<NSString, UIImage>()
+    }
+
+    func updateImage(owner: RepoOwner?) {
+        guard  let userId = owner?.accountId as NSString? else {
+            return
+        }
+        if let img = imageCache.object(forKey: userId) {
+            DispatchQueue.main.async {
+                self.image = img
+                return
+            }
+        }
+        DispatchQueue.global().async {
+            if let urlStr = owner?.links?.avatarLink?.href, let url = URL(string: urlStr), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                self.imageCache.setObject(image, forKey: userId)
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }
+        }
+    }
+}
+
