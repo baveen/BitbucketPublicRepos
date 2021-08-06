@@ -46,6 +46,7 @@ class PublicRepoTableViewCell: UITableViewCell {
         return holder
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureCell()
@@ -55,6 +56,15 @@ class PublicRepoTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
         self.separatorInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         configureCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarImageView.image = nil
+        repositoryNameLabel.text = nil
+        typeNameLabel.text = nil
+        createdDateLabel.text = nil
     }
     
     
@@ -83,28 +93,26 @@ class PublicRepoTableViewCell: UITableViewCell {
 
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        avatarImageView.image = nil
-        repositoryNameLabel.text = nil
-        typeNameLabel.text = nil
-        createdDateLabel.text = nil
+    func customize(label: UILabel) {
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 14)
     }
 
     func update(repo: PublicRepo, at cell: PublicRepoTableViewCell) {
         DispatchQueue.main.async {
             cell.repositoryNameLabel.text = "Repo Name: \(repo.fullName ?? "")".capitalized
             cell.typeNameLabel.text = "Type: \(repo.type ?? "")".capitalized
-            cell.createdDateLabel.text = "Created On: \(repo.createdOn ?? "")".capitalized
+            cell.createdDateLabel.text = "Created On: \(repo.createdOn?.dateFromString() ?? "")".capitalized
         }
     }
     
-    
-    
-    func customize(label: UILabel) {
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 14)
+}
+
+extension String {
+    func dateFromString() -> String {
+        let dateFor: DateFormatter = DateFormatter()
+        dateFor.dateFormat = "YYYY-MM-dd"
+        return dateFor.string(from: dateFor.date(from: self) ?? Date())
     }
 }
 
