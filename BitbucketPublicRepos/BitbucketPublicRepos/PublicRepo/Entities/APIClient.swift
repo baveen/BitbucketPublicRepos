@@ -38,7 +38,7 @@ class APIClient: ClientProtocol {
                 case 200, 201:
                     completion(reponseData, nil)
                 default:
-                    let customError = NSError(domain: "om.rbtechsolutions.SampleBitBucketRep", code: 1001, userInfo: ["fetchFailed" : "Unable to Fetch Data"])
+                    let customError = NSError(domain: "com.rbtechsolutions.SampleBitBucketRep", code: 1001, userInfo: ["fetchFailed" : "Unable to Fetch Data"])
                     completion(nil, customError)
                 }
             }
